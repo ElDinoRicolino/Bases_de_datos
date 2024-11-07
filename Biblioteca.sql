@@ -33,6 +33,8 @@ CREATE TABLE Usuarios(
     Direccion varchar(30),
     Telefono varchar(15),
     Correo_electronico varchar(50) not null,
+	Membresia bit default 1,
+	Cantprest int,
     CONSTRAINT PK_IDusuario PRIMARY KEY(IDusuario),
 	CONSTRAINT UC_Correo UNIQUE(Correo_electronico)
 )
@@ -53,6 +55,8 @@ CREATE TABLE Prestamos(
 	IDpersonal int not null,
     FechaInicio date,
     FechaFin date,
+	Fecharegreso date,
+	Multa int,
     Renovacion bit default 0,
 	IDpersonal_renovacion int default null,
     CONSTRAINT PK_IDprestamo PRIMARY KEY(IDprestamo),
@@ -61,4 +65,29 @@ CREATE TABLE Prestamos(
 	CONSTRAINT FK_IDprestamo FOREIGN KEY(IDpersonal) REFERENCES Bibliotecario(IDpersonal),
 	CONSTRAINT FK_IDprestamo_renovacion FOREIGN KEY(IDpersonal_renovacion) REFERENCES Bibliotecario(IDpersonal)
 )
---Este es un comentario
+
+Create table Reservaciones (
+IDreservacion int not null, 
+IDusuario int not null,
+ISBN int not null,
+Fechareserva date,
+Constraint PK_IDreservacion Primary Key(IDreservacion),
+Constraint FK_IDusuario_reservacion Foreign Key(IDusuario) References Usuarios(IDusuario),
+Constraint FK_ISBN_reservacion Foreign key(ISBN) References Libros(ISBN)
+)
+
+Create table Multas (
+IDmulta int not null,
+IDprestamo int not null,
+IDusuario int not null, 
+Cantidad int,
+Fechamulta date,
+Fechapago date, 
+Constraint PK_IDmulta Primary Key(IDmulta),
+Constraint FK_IDprestamo_multa Foreign Key (IDprestamo) References Prestamos(IDprestamo),
+Constraint FK_IDusuarios_multa Foreign Key (IDusuario) References Usuarios(IDusuario)
+
+)
+
+alter table Multas add constraint CH_Prestamo_multas check (Cantidad >= 0);
+alter table Usuarios add constraint CH_cantidad_prestamos check (Cantprest >= 0 and Cantprest <=5)
