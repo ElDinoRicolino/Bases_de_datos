@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
-//Conexion
+
 using Microsoft.Data.SqlClient;
 using Microsoft.Data.SqlClient.Server;
 
@@ -60,51 +60,16 @@ namespace Base_Datos_II
         }
         private void librosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label1.Visible = true;
-            DGWLibros.Visible = true;
-            btnAgregar.Visible = true;
-            btnEliminar.Visible = true;
-            btnModificar.Visible = true;
-
-            txtTitulo.Visible = true;
-            txtAutor.Visible = true;
-            txtEditorial.Visible = true;
-            txtISBN.Visible = true;
-            TxtCopia.Visible = true;
-
-            labelTitulo.Visible = true;
-            labelAutor.Visible = true;
-            labelAño.Visible = true;
-            labelCopias.Visible = true;
-            labelISBN.Visible = true;
-            labelEditorial.Visible = true;
-        
-            dtpFecha.Visible = true;
-
+            Form formulario = new Libros();
+            formulario.Show();
+            this.Hide();
         }
 
         private void prestamosYDevolucionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label1.Visible = false;
-            DGWLibros.Visible = false;
-            btnAgregar.Visible = false;
-            btnEliminar.Visible = false;
-            btnModificar.Visible = false;
-
-            txtTitulo.Visible = false;
-            txtAutor.Visible = false;
-            TxtCopia.Visible = false;
-            txtEditorial.Visible = false;
-            txtISBN.Visible = false;
-
-            labelTitulo.Visible = false;
-            labelAutor.Visible = false;
-            labelAño.Visible = false;
-            labelCopias.Visible = false;
-            labelISBN.Visible = false;
-            labelEditorial.Visible = false;
-
-            dtpFecha.Visible = false;
+            Form formulario = new Prestamos_y_devoluciones();
+            formulario.Show();
+            this.Hide();
         }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -268,6 +233,26 @@ namespace Base_Datos_II
                     }
                 }
             }
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuPersonal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void txtTitulo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEditorial_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

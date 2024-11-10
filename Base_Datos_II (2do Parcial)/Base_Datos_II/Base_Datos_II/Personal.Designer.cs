@@ -65,9 +65,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(25, 25, 25);
-            label1.Location = new Point(8, 24);
+            label1.Location = new Point(92, 76);
             label1.Name = "label1";
-            label1.Size = new Size(112, 45);
+            label1.Size = new Size(137, 54);
             label1.TabIndex = 1;
             label1.Text = "Libros";
             label1.Visible = false;
@@ -77,12 +77,13 @@
             btnVolver.BackColor = Color.Crimson;
             btnVolver.Cursor = Cursors.Hand;
             btnVolver.FlatAppearance.BorderColor = Color.Crimson;
-            btnVolver.FlatStyle = FlatStyle.Popup;
+            btnVolver.FlatStyle = FlatStyle.Flat;
             btnVolver.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = SystemColors.ButtonFace;
-            btnVolver.Location = new Point(543, 329);
+            btnVolver.Location = new Point(793, 612);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(98, 40);
+            btnVolver.Size = new Size(125, 53);
             btnVolver.TabIndex = 17;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
@@ -95,14 +96,15 @@
             MenuPersonal.Items.AddRange(new ToolStripItem[] { librosToolStripMenuItem, prestamosYDevolucionesToolStripMenuItem, reportesToolStripMenuItem });
             MenuPersonal.Location = new Point(0, 0);
             MenuPersonal.Name = "MenuPersonal";
-            MenuPersonal.Size = new Size(653, 24);
+            MenuPersonal.Padding = new Padding(7, 3, 0, 3);
+            MenuPersonal.Size = new Size(930, 30);
             MenuPersonal.TabIndex = 18;
             MenuPersonal.Text = "menuStrip1";
             // 
             // librosToolStripMenuItem
             // 
             librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            librosToolStripMenuItem.Size = new Size(51, 20);
+            librosToolStripMenuItem.Size = new Size(63, 24);
             librosToolStripMenuItem.Text = "Libros";
             librosToolStripMenuItem.Click += librosToolStripMenuItem_Click;
             // 
@@ -110,7 +112,7 @@
             // 
             prestamosYDevolucionesToolStripMenuItem.Name = "prestamosYDevolucionesToolStripMenuItem";
             prestamosYDevolucionesToolStripMenuItem.Padding = new Padding(18, 0, 4, 0);
-            prestamosYDevolucionesToolStripMenuItem.Size = new Size(170, 20);
+            prestamosYDevolucionesToolStripMenuItem.Size = new Size(205, 24);
             prestamosYDevolucionesToolStripMenuItem.Text = "Prestamos y devoluciones";
             prestamosYDevolucionesToolStripMenuItem.Click += prestamosYDevolucionesToolStripMenuItem_Click;
             // 
@@ -118,7 +120,7 @@
             // 
             reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             reportesToolStripMenuItem.Padding = new Padding(18, 0, 4, 0);
-            reportesToolStripMenuItem.Size = new Size(79, 20);
+            reportesToolStripMenuItem.Size = new Size(94, 24);
             reportesToolStripMenuItem.Text = "Reportes";
             reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
             // 
@@ -127,11 +129,12 @@
             DGWLibros.BackgroundColor = Color.FromArgb(77, 77, 77);
             DGWLibros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGWLibros.Columns.AddRange(new DataGridViewColumn[] { DGWISBN, DGWTitulo, DGWAutor, DGWEditorial, DGWPublicacion, DGWCopias });
-            DGWLibros.Location = new Point(6, 148);
+            DGWLibros.Location = new Point(33, 270);
+            DGWLibros.Margin = new Padding(3, 4, 3, 4);
             DGWLibros.Name = "DGWLibros";
             DGWLibros.RowHeadersWidth = 62;
             DGWLibros.RowTemplate.Height = 25;
-            DGWLibros.Size = new Size(641, 167);
+            DGWLibros.Size = new Size(872, 325);
             DGWLibros.TabIndex = 19;
             DGWLibros.Visible = false;
             DGWLibros.CellContentClick += DGWLibros_CellContentClick;
@@ -186,9 +189,10 @@
             btnEliminar.FlatStyle = FlatStyle.Popup;
             btnEliminar.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(428, 329);
+            btnEliminar.Location = new Point(642, 612);
+            btnEliminar.Margin = new Padding(3, 4, 3, 4);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(109, 40);
+            btnEliminar.Size = new Size(144, 53);
             btnEliminar.TabIndex = 20;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
@@ -203,9 +207,10 @@
             btnAgregar.FlatStyle = FlatStyle.Popup;
             btnAgregar.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregar.ForeColor = SystemColors.ButtonFace;
-            btnAgregar.Location = new Point(176, 329);
+            btnAgregar.Location = new Point(328, 612);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(112, 40);
+            btnAgregar.Size = new Size(128, 53);
             btnAgregar.TabIndex = 21;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
@@ -220,9 +225,10 @@
             btnModificar.FlatStyle = FlatStyle.Popup;
             btnModificar.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnModificar.ForeColor = Color.White;
-            btnModificar.Location = new Point(294, 329);
+            btnModificar.Location = new Point(462, 612);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(128, 40);
+            btnModificar.Size = new Size(174, 53);
             btnModificar.TabIndex = 22;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = false;
@@ -235,9 +241,9 @@
             labelTitulo.BackColor = Color.FromArgb(250, 250, 250);
             labelTitulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelTitulo.ForeColor = Color.FromArgb(51, 51, 51);
-            labelTitulo.Location = new Point(12, 69);
+            labelTitulo.Location = new Point(97, 136);
             labelTitulo.Name = "labelTitulo";
-            labelTitulo.Size = new Size(56, 24);
+            labelTitulo.Size = new Size(74, 29);
             labelTitulo.TabIndex = 23;
             labelTitulo.Text = "Titulo";
             labelTitulo.Visible = false;
@@ -248,9 +254,9 @@
             labelCopias.BackColor = Color.FromArgb(250, 250, 250);
             labelCopias.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelCopias.ForeColor = Color.FromArgb(51, 51, 51);
-            labelCopias.Location = new Point(463, 93);
+            labelCopias.Location = new Point(612, 168);
             labelCopias.Name = "labelCopias";
-            labelCopias.Size = new Size(68, 24);
+            labelCopias.Size = new Size(89, 29);
             labelCopias.TabIndex = 24;
             labelCopias.Text = "Copias";
             labelCopias.Visible = false;
@@ -261,9 +267,9 @@
             labelAño.BackColor = Color.FromArgb(250, 250, 250);
             labelAño.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelAño.ForeColor = Color.FromArgb(51, 51, 51);
-            labelAño.Location = new Point(360, 69);
+            labelAño.Location = new Point(472, 135);
             labelAño.Name = "labelAño";
-            labelAño.Size = new Size(177, 24);
+            labelAño.Size = new Size(223, 29);
             labelAño.TabIndex = 25;
             labelAño.Text = "Año De Publicacion";
             labelAño.Visible = false;
@@ -274,9 +280,9 @@
             labelEditorial.BackColor = Color.FromArgb(250, 250, 250);
             labelEditorial.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelEditorial.ForeColor = Color.FromArgb(51, 51, 51);
-            labelEditorial.Location = new Point(12, 117);
+            labelEditorial.Location = new Point(97, 200);
             labelEditorial.Name = "labelEditorial";
-            labelEditorial.Size = new Size(77, 24);
+            labelEditorial.Size = new Size(102, 29);
             labelEditorial.TabIndex = 26;
             labelEditorial.Text = "Editorial";
             labelEditorial.Visible = false;
@@ -287,9 +293,9 @@
             labelISBN.BackColor = Color.FromArgb(250, 250, 250);
             labelISBN.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelISBN.ForeColor = Color.FromArgb(51, 51, 51);
-            labelISBN.Location = new Point(477, 119);
+            labelISBN.Location = new Point(628, 203);
             labelISBN.Name = "labelISBN";
-            labelISBN.Size = new Size(52, 24);
+            labelISBN.Size = new Size(69, 29);
             labelISBN.TabIndex = 27;
             labelISBN.Text = "ISBN";
             labelISBN.Visible = false;
@@ -300,9 +306,9 @@
             labelAutor.BackColor = Color.FromArgb(250, 250, 250);
             labelAutor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelAutor.ForeColor = Color.FromArgb(51, 51, 51);
-            labelAutor.Location = new Point(14, 93);
+            labelAutor.Location = new Point(99, 168);
             labelAutor.Name = "labelAutor";
-            labelAutor.Size = new Size(55, 24);
+            labelAutor.Size = new Size(69, 29);
             labelAutor.TabIndex = 28;
             labelAutor.Text = "Autor";
             labelAutor.Visible = false;
@@ -310,68 +316,77 @@
             // txtTitulo
             // 
             txtTitulo.Cursor = Cursors.IBeam;
-            txtTitulo.Location = new Point(80, 73);
+            txtTitulo.Location = new Point(174, 141);
+            txtTitulo.Margin = new Padding(3, 4, 3, 4);
             txtTitulo.Multiline = true;
             txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(256, 22);
+            txtTitulo.Size = new Size(292, 28);
             txtTitulo.TabIndex = 29;
             txtTitulo.Visible = false;
+            txtTitulo.TextChanged += txtTitulo_TextChanged;
             // 
             // txtAutor
             // 
             txtAutor.Cursor = Cursors.IBeam;
-            txtAutor.Location = new Point(80, 97);
+            txtAutor.Location = new Point(174, 173);
+            txtAutor.Margin = new Padding(3, 4, 3, 4);
             txtAutor.Multiline = true;
             txtAutor.Name = "txtAutor";
-            txtAutor.Size = new Size(256, 22);
+            txtAutor.Size = new Size(292, 28);
             txtAutor.TabIndex = 36;
             txtAutor.Visible = false;
             // 
             // txtEditorial
             // 
             txtEditorial.Cursor = Cursors.IBeam;
-            txtEditorial.Location = new Point(106, 121);
+            txtEditorial.Location = new Point(204, 205);
+            txtEditorial.Margin = new Padding(3, 4, 3, 4);
             txtEditorial.Multiline = true;
             txtEditorial.Name = "txtEditorial";
-            txtEditorial.Size = new Size(230, 22);
+            txtEditorial.Size = new Size(262, 28);
             txtEditorial.TabIndex = 37;
             txtEditorial.Visible = false;
+            txtEditorial.TextChanged += txtEditorial_TextChanged;
             // 
             // txtISBN
             // 
             txtISBN.Cursor = Cursors.IBeam;
-            txtISBN.Location = new Point(543, 121);
+            txtISBN.Location = new Point(704, 205);
+            txtISBN.Margin = new Padding(3, 4, 3, 4);
             txtISBN.Multiline = true;
             txtISBN.Name = "txtISBN";
-            txtISBN.Size = new Size(105, 22);
+            txtISBN.Size = new Size(119, 28);
             txtISBN.TabIndex = 39;
             txtISBN.Visible = false;
             // 
             // TxtCopia
             // 
             TxtCopia.Cursor = Cursors.IBeam;
-            TxtCopia.Location = new Point(543, 97);
+            TxtCopia.Location = new Point(704, 173);
+            TxtCopia.Margin = new Padding(3, 4, 3, 4);
             TxtCopia.Multiline = true;
             TxtCopia.Name = "TxtCopia";
-            TxtCopia.Size = new Size(105, 22);
+            TxtCopia.Size = new Size(119, 28);
             TxtCopia.TabIndex = 40;
             TxtCopia.Visible = false;
             // 
             // dtpFecha
             // 
-            dtpFecha.Location = new Point(543, 68);
+            dtpFecha.Location = new Point(704, 135);
+            dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(105, 23);
+            dtpFecha.Size = new Size(119, 27);
             dtpFecha.TabIndex = 41;
             dtpFecha.Value = new DateTime(2024, 10, 7, 0, 0, 0, 0);
             dtpFecha.Visible = false;
+            dtpFecha.ValueChanged += dtpFecha_ValueChanged;
             // 
             // Personal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 250, 250);
-            ClientSize = new Size(653, 381);
+            ClientSize = new Size(930, 669);
             ControlBox = false;
             Controls.Add(dtpFecha);
             Controls.Add(TxtCopia);
@@ -393,7 +408,9 @@
             Controls.Add(label1);
             Controls.Add(MenuPersonal);
             ForeColor = Color.FromArgb(77, 77, 77);
+            FormBorderStyle = FormBorderStyle.None;
             MainMenuStrip = MenuPersonal;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             Name = "Personal";
             StartPosition = FormStartPosition.CenterScreen;
