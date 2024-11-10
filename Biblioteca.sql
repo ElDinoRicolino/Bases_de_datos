@@ -137,7 +137,6 @@ Begin
 	Set @FechaFin = DATEADD(DAY,14,@FechaInicio)
 	
 	update Usuarios set Cantprest = Cantprest + 1 where IDusuario = @idusuario
-	if 
 	Insert into Prestamos (IDusuario,ISBN,IDpersonal,FechaInicio, FechaFin) Values (@Idusuario,@ISBN,@IDpersonal,@FechaInicio,@FechaFin)
 End 
 go 
