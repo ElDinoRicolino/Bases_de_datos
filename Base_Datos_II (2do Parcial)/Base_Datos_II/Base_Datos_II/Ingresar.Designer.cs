@@ -41,9 +41,9 @@
             txtNombre = new TextBox();
             labelContraseña = new Label();
             txtContraseña = new TextBox();
-            btnIngresarM = new Button();
-            btnIngresarP = new Button();
+            btnIngresar = new Button();
             btnSalir = new Button();
+            btnMiembro = new Button();
             SuspendLayout();
             // 
             // label1
@@ -97,7 +97,7 @@
             btnPersonal.FlatStyle = FlatStyle.Popup;
             btnPersonal.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnPersonal.ForeColor = SystemColors.ButtonFace;
-            btnPersonal.Location = new Point(312, 125);
+            btnPersonal.Location = new Point(384, 127);
             btnPersonal.Name = "btnPersonal";
             btnPersonal.Size = new Size(135, 52);
             btnPersonal.TabIndex = 6;
@@ -174,39 +174,21 @@
             txtContraseña.TabIndex = 12;
             txtContraseña.Visible = false;
             // 
-            // btnIngresarM
+            // btnIngresar
             // 
-            btnIngresarM.BackColor = Color.FromArgb(107, 114, 128);
-            btnIngresarM.FlatAppearance.BorderSize = 0;
-            btnIngresarM.FlatStyle = FlatStyle.Popup;
-            btnIngresarM.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnIngresarM.ForeColor = Color.White;
-            btnIngresarM.Location = new Point(322, 308);
-            btnIngresarM.Name = "btnIngresarM";
-            btnIngresarM.Size = new Size(125, 40);
-            btnIngresarM.TabIndex = 13;
-            btnIngresarM.Text = "Ingresar";
-            btnIngresarM.UseVisualStyleBackColor = false;
-            btnIngresarM.Visible = false;
-            btnIngresarM.Click += btnIngresarM_Click;
-            // 
-            // btnIngresarP
-            // 
-            btnIngresarP.BackColor = Color.FromArgb(107, 114, 128);
-            btnIngresarP.Cursor = Cursors.Hand;
-            btnIngresarP.FlatAppearance.BorderColor = Color.FromArgb(107, 114, 128);
-            btnIngresarP.FlatAppearance.BorderSize = 0;
-            btnIngresarP.FlatStyle = FlatStyle.Popup;
-            btnIngresarP.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnIngresarP.ForeColor = Color.White;
-            btnIngresarP.Location = new Point(322, 308);
-            btnIngresarP.Name = "btnIngresarP";
-            btnIngresarP.Size = new Size(125, 40);
-            btnIngresarP.TabIndex = 14;
-            btnIngresarP.Text = "Ingresar";
-            btnIngresarP.UseVisualStyleBackColor = false;
-            btnIngresarP.Visible = false;
-            btnIngresarP.Click += btnIngresarP_Click;
+            btnIngresar.BackColor = Color.FromArgb(107, 114, 128);
+            btnIngresar.FlatAppearance.BorderSize = 0;
+            btnIngresar.FlatStyle = FlatStyle.Popup;
+            btnIngresar.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnIngresar.ForeColor = Color.White;
+            btnIngresar.Location = new Point(322, 308);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(125, 40);
+            btnIngresar.TabIndex = 13;
+            btnIngresar.Text = "Ingresar";
+            btnIngresar.UseVisualStyleBackColor = false;
+            btnIngresar.Visible = false;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // btnSalir
             // 
@@ -224,6 +206,23 @@
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
+            // btnMiembro
+            // 
+            btnMiembro.BackColor = Color.SkyBlue;
+            btnMiembro.Cursor = Cursors.Hand;
+            btnMiembro.FlatAppearance.BorderColor = Color.FromArgb(59, 130, 246);
+            btnMiembro.FlatAppearance.BorderSize = 0;
+            btnMiembro.FlatStyle = FlatStyle.Popup;
+            btnMiembro.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMiembro.ForeColor = SystemColors.ActiveCaptionText;
+            btnMiembro.Location = new Point(234, 127);
+            btnMiembro.Name = "btnMiembro";
+            btnMiembro.Size = new Size(135, 52);
+            btnMiembro.TabIndex = 16;
+            btnMiembro.Text = "Miembro";
+            btnMiembro.UseVisualStyleBackColor = false;
+            btnMiembro.Click += btnMiembro_Click;
+            // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -231,9 +230,9 @@
             BackColor = Color.FromArgb(243, 244, 246);
             ClientSize = new Size(794, 464);
             ControlBox = false;
+            Controls.Add(btnMiembro);
             Controls.Add(btnSalir);
-            Controls.Add(btnIngresarP);
-            Controls.Add(btnIngresarM);
+            Controls.Add(btnIngresar);
             Controls.Add(txtContraseña);
             Controls.Add(labelContraseña);
             Controls.Add(txtNombre);
@@ -269,9 +268,9 @@
         private TextBox txtNombre;
         private Label labelContraseña;
         private TextBox txtContraseña;
-        private Button btnIngresarM;
-        private Button btnIngresarP;
+        private Button btnIngresar;
         private Button btnSalir;
+        private Button btnMiembro;
     }
 
 
