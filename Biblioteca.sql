@@ -10,12 +10,13 @@ CREATE TABLE Categoria(
 )
  
 CREATE TABLE Libros(
-    ISBN int not null,
+    ISBN int not null Identity (),
     Titulo varchar(30),
     Autor varchar(30),
     Editorial varchar(30),
     Publicacion date,
     Num_Copias int,
+	Estado varchar(10) default 'disponible',
     CONSTRAINT PK_ISBN PRIMARY KEY(ISBN),
 )
 
@@ -28,8 +29,10 @@ CREATE TABLE Categoria_Libro(
 )
 
 CREATE TABLE Usuarios(
-    IDusuario int not null,
+    IDusuario int not null identity (1000, 1),
     Nombre varchar(30),
+	Primerapellido varchar(25),
+	Segundoapellido varchar(25),
     Direccion varchar(30),
     Telefono varchar(15),
     Correo_electronico varchar(50) not null,
@@ -49,7 +52,7 @@ CREATE TABLE Bibliotecario(
 )
 
 CREATE TABLE Prestamos(
-    IDprestamo int not null,
+    IDprestamo int not null identity(1,1),
     IDusuario int not null,
     ISBN int not null,
 	IDpersonal int not null,
@@ -89,5 +92,72 @@ Constraint FK_IDusuarios_multa Foreign Key (IDusuario) References Usuarios(IDusu
 
 )
 
-alter table Multas add constraint CH_Prestamo_multas check (Cantidad >= 0);
+alter table Multas add constraint CH_Prestamo_multas check (Cantidad >= 0)
+go
 alter table Usuarios add constraint CH_cantidad_prestamos check (Cantprest >= 0 and Cantprest <=5)
+go
+
+
+--Aqui empiezan los triggers
+Create Trigger Tr_ActualizarEstadoLibro 
+on Prestamos
+instead of update,insert,delete
+as 
+Begin
+	Update Libros set Num_Copias = Num_Copias - 1
+
+	Declare Estados Cursor Scroll For
+	Select ISBN
+	From inserted
+
+	Open Estados  
+
+	Declare @ISBN int
+
+	Fetch Next From Estados Into @ISBN
+
+	While @@FETCH_STATUS = 0
+	Begin
+
+		If exists (Select * From Libros Where ISBN = @ISBN and Num_Copias = 0 )
+		begin
+			Update Libros set Estado = 'No disponible' where ISBN = @ISBN
+		end 
+		Fetch Next From Estados Into @ISBN 
+	End 
+
+	Close Estados 
+	Deallocate Estados 
+
+End
+go 
+
+--Aqui empiezan los Store Precedure
+Create procedure SP_AgregarLibros
+@Titulo varchar(30), @Autor varchar(30), @Editorial varchar(30),@Publicacion date, @Num_Copias int
+As 
+Begin
+	Insert into Libros(Titulo,Autor,Editorial,Publicacion,Num_Copias) values (@Titulo,@Autor,@Editorial,@Publicacion,@Num_Copias)
+End
+go
+
+Create Procedure SP_PrestarLibro
+@Nombre varchar(30), @Lastname1 varchar(25),@Lastname2 varchar(25), @ISBN int, @IDpersonal int
+As 
+Begin   
+	Declare @Idusuario int, @FechaInicio date, @FechaFin date
+	set @FechaInicio = GETDATE()
+	Select @idusuario = IDusuario From Usuarios Where Nombre = @Nombre and PrimerApellido = @Lastname1 and SegundoApellido = @Lastname2 
+	Set @FechaFin = DATEADD(DAY,14,@FechaInicio)
+	
+	Insert into Prestamos (IDusuario,ISBN,IDpersonal,FechaInicio) Values (@Idusuario,@ISBN,@IDpersonal,@FechaInicio,@FechaFin)
+End 
+go 
+
+Create Procedure SP_RegistrarUsuario 
+@Nombre varchar(30),@Primerapellido varchar(25),@Segundoapellido varchar(25),@Direccion varchar(30),@Telefono varchar(15),@Correo_electronico varchar(50) 
+As 
+Begin 
+	Insert into Usuarios (Nombre,Primerapellido,Segundoapellido,Direccion, Telefono, Correo_electronico) Values (@Nombre,@Primerapellido,@Segundoapellido,@Direccion,@Telefono,@Correo_electronico)
+End
+go
