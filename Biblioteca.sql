@@ -101,38 +101,28 @@ go
 --Aqui empiezan los triggers
 Create Trigger Tr_ActualizarEstadoLibro 
 on Prestamos
-instead of update,insert,delete
+instead of insert
 as 
-Begin
-	Update Libros set Num_Copias = Num_Copias - 1
-
-	Declare Estados Cursor Scroll For
-	Select ISBN
-	From inserted
-
-	Open Estados  
-
+Begin 
 	Declare @ISBN int
+	select @ISBN = ISBN
+	from inserted
 
-	Fetch Next From Estados Into @ISBN
-
-	While @@FETCH_STATUS = 0
-	Begin
-
-		If exists (Select * From Libros Where ISBN = @ISBN and Num_Copias = 0 )
-		begin
+	If (Select Num_Copias From Libros Where ISBN = @ISBN ) > 0
+	begin
+		Update Libros set Num_Copias = Num_Copias - 1 where ISBN = @ISBN
+		insert into Prestamos
+		select IDusuario, ISBN, IDpersonal, FechaInicio, FechaFin, Fecharegreso, Multa, Renovacion, IDpersonal_renovacion
+		from inserted
+		if (Select Num_Copias from Libros where ISBN = @ISBN) < 1
+		begin 
 			Update Libros set Estado = 'No disponible' where ISBN = @ISBN
-		end 
-		Fetch Next From Estados Into @ISBN 
-	End 
-
-	Close Estados 
-	Deallocate Estados 
-
+		end
+	end
 End
 go 
 
---Aqui empiezan los Store Precedure
+--Aqui empiezan los Stored Precedure
 Create procedure SP_AgregarLibros
 @Titulo varchar(30), @Autor varchar(30), @Editorial varchar(30),@Publicacion date, @Num_Copias int
 As 
