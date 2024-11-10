@@ -36,6 +36,7 @@ CREATE TABLE Usuarios(
     Direccion varchar(30),
     Telefono varchar(15),
     Correo_electronico varchar(50) not null,
+	Cantprest int default 0,
 	Membresia bit default 1,
     CONSTRAINT PK_IDusuario PRIMARY KEY(IDusuario),
 	CONSTRAINT UC_Correo UNIQUE(Correo_electronico)
@@ -57,7 +58,7 @@ CREATE TABLE Prestamos(
 	IDpersonal int not null,
     FechaInicio date,
     FechaFin date,
-	Fecharegreso date,
+	Fecharegreso date default null,
     Renovacion bit default 0,
 	IDpersonal_renovacion int default null,
     CONSTRAINT PK_IDprestamo PRIMARY KEY(IDprestamo),
@@ -101,14 +102,17 @@ on Prestamos
 instead of insert
 as 
 Begin 
-	Declare @ISBN int
+	Declare @ISBN int, @idusuario int
 	select @ISBN = ISBN
+	from inserted
+
+	select @idusuario = IDusuario
 	from inserted
 
 	If (Select Num_Copias From Libros Where ISBN = @ISBN ) > 0
 	begin
 		Update Libros set Num_Copias = Num_Copias - 1 where ISBN = @ISBN
-		insert into Prestamos
+		insert into Prestamos (IDusuario, ISBN, IDpersonal, FechaInicio, FechaFin)
 		select IDusuario, ISBN, IDpersonal, FechaInicio, FechaFin
 		from inserted
 		if (Select Num_Copias from Libros where ISBN = @ISBN) < 1
@@ -148,3 +152,7 @@ Begin
 	Insert into Usuarios (Nombre,Primerapellido,Segundoapellido,Direccion, Telefono, Correo_electronico) Values (@Nombre,@Primerapellido,@Segundoapellido,@Direccion,@Telefono,@Correo_electronico)
 End
 go
+
+--drop procedure SP_AgregarLibros
+--drop procedure SP_PrestarLibro
+--drop procedure SP_RegistrarUsuario
