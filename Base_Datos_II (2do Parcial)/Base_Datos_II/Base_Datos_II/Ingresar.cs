@@ -6,6 +6,7 @@ namespace Base_Datos_II
 {
     public partial class Inicio : Form
     {
+        private string tipoUsuario;
         public Inicio()
         {
             InitializeComponent();
@@ -54,40 +55,41 @@ namespace Base_Datos_II
 
         private void btnMiembro_Click(object sender, EventArgs e)
         {
+            tipoUsuario = "Miembro";
             labelID.Visible = true;
             txtid.Visible = true;
             labelContraseña.Visible = true;
             txtContraseña.Visible = true;
+            btnIngresar.Visible = true;
+
             labelNombre.Visible = false;
             txtNombre.Visible = false;
-            btnIngresarM.Visible = true;
-            btnIngresarP.Visible = false;
         }
-
         private void btnPersonal_Click(object sender, EventArgs e)
         {
-            labelID.Visible = false;
-            txtid.Visible = false;
-            labelContraseña.Visible = true;
-            txtContraseña.Visible = true;
+            tipoUsuario = "Personal";
             labelNombre.Visible = true;
             txtNombre.Visible = true;
-            btnIngresarM.Visible = false;
-            btnIngresarP.Visible = true;
-        }
+            labelContraseña.Visible = true;
+            txtContraseña.Visible = true;
+            btnIngresar.Visible = true;
 
-        private void btnIngresarP_Click(object sender, EventArgs e)
+            labelID.Visible = false;
+            txtid.Visible = false;
+        }
+        private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Personal ventanaPersonal = new Personal();
-            ventanaPersonal.ShowDialog();
+            if (tipoUsuario == "Miembro")
+            {
+                Miembro ventanaMiembro = new Miembro();
+                ventanaMiembro.ShowDialog();
+            }
+            else if (tipoUsuario == "Personal")
+            {
+                Personal ventanaPersonal = new Personal();
+                ventanaPersonal.ShowDialog();
+            }
         }
-
-        private void btnIngresarM_Click(object sender, EventArgs e)
-        {
-            Miembro ventanaMiembro = new Miembro();
-            ventanaMiembro.ShowDialog();
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
