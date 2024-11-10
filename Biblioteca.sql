@@ -10,7 +10,7 @@ CREATE TABLE Categoria(
 )
  
 CREATE TABLE Libros(
-    ISBN int not null Identity (),
+    ISBN int not null,
     Titulo varchar(30),
     Autor varchar(30),
     Editorial varchar(30),
@@ -37,7 +37,6 @@ CREATE TABLE Usuarios(
     Telefono varchar(15),
     Correo_electronico varchar(50) not null,
 	Membresia bit default 1,
-	Cantprest int,
     CONSTRAINT PK_IDusuario PRIMARY KEY(IDusuario),
 	CONSTRAINT UC_Correo UNIQUE(Correo_electronico)
 )
@@ -59,7 +58,6 @@ CREATE TABLE Prestamos(
     FechaInicio date,
     FechaFin date,
 	Fecharegreso date,
-	Multa int,
     Renovacion bit default 0,
 	IDpersonal_renovacion int default null,
     CONSTRAINT PK_IDprestamo PRIMARY KEY(IDprestamo),
@@ -70,26 +68,25 @@ CREATE TABLE Prestamos(
 )
 
 Create table Reservaciones (
-IDreservacion int not null, 
-IDusuario int not null,
-ISBN int not null,
-Fechareserva date,
-Constraint PK_IDreservacion Primary Key(IDreservacion),
-Constraint FK_IDusuario_reservacion Foreign Key(IDusuario) References Usuarios(IDusuario),
-Constraint FK_ISBN_reservacion Foreign key(ISBN) References Libros(ISBN)
+	IDreservacion int not null, 
+	IDusuario int not null,
+	ISBN int not null,
+	Fechareserva date,
+	Constraint PK_IDreservacion Primary Key(IDreservacion),
+	Constraint FK_IDusuario_reservacion Foreign Key(IDusuario) References Usuarios(IDusuario),
+	Constraint FK_ISBN_reservacion Foreign key(ISBN) References Libros(ISBN)
 )
 
 Create table Multas (
-IDmulta int not null,
-IDprestamo int not null,
-IDusuario int not null, 
-Cantidad int,
-Fechamulta date,
-Fechapago date, 
-Constraint PK_IDmulta Primary Key(IDmulta),
-Constraint FK_IDprestamo_multa Foreign Key (IDprestamo) References Prestamos(IDprestamo),
-Constraint FK_IDusuarios_multa Foreign Key (IDusuario) References Usuarios(IDusuario)
-
+	IDmulta int not null,
+	IDprestamo int not null,
+	IDusuario int not null, 
+	Cantidad int,
+	Fechamulta date,
+	Fechapago date, 
+	Constraint PK_IDmulta Primary Key(IDmulta),
+	Constraint FK_IDprestamo_multa Foreign Key (IDprestamo) References Prestamos(IDprestamo),
+	Constraint FK_IDusuarios_multa Foreign Key (IDusuario) References Usuarios(IDusuario)
 )
 
 alter table Multas add constraint CH_Prestamo_multas check (Cantidad >= 0)
@@ -112,7 +109,7 @@ Begin
 	begin
 		Update Libros set Num_Copias = Num_Copias - 1 where ISBN = @ISBN
 		insert into Prestamos
-		select IDusuario, ISBN, IDpersonal, FechaInicio, FechaFin, Fecharegreso, Multa, Renovacion, IDpersonal_renovacion
+		select IDusuario, ISBN, IDpersonal, FechaInicio, FechaFin
 		from inserted
 		if (Select Num_Copias from Libros where ISBN = @ISBN) < 1
 		begin 
@@ -122,25 +119,26 @@ Begin
 End
 go 
 
---Aqui empiezan los Stored Precedure
+--Aqui empiezan los Stored Precedures
 Create procedure SP_AgregarLibros
-@Titulo varchar(30), @Autor varchar(30), @Editorial varchar(30),@Publicacion date, @Num_Copias int
+@ISBN int, @Titulo varchar(30), @Autor varchar(30), @Editorial varchar(30),@Publicacion date, @Num_Copias int
 As 
 Begin
-	Insert into Libros(Titulo,Autor,Editorial,Publicacion,Num_Copias) values (@Titulo,@Autor,@Editorial,@Publicacion,@Num_Copias)
+	Insert into Libros(ISBN, Titulo,Autor,Editorial,Publicacion,Num_Copias) values (@ISBN, @Titulo,@Autor,@Editorial,@Publicacion,@Num_Copias)
 End
 go
 
 Create Procedure SP_PrestarLibro
-@Nombre varchar(30), @Lastname1 varchar(25),@Lastname2 varchar(25), @ISBN int, @IDpersonal int
+@idusuario int, @ISBN int, @IDpersonal int
 As 
 Begin   
-	Declare @Idusuario int, @FechaInicio date, @FechaFin date
+	Declare @FechaInicio date, @FechaFin date
 	set @FechaInicio = GETDATE()
-	Select @idusuario = IDusuario From Usuarios Where Nombre = @Nombre and PrimerApellido = @Lastname1 and SegundoApellido = @Lastname2 
 	Set @FechaFin = DATEADD(DAY,14,@FechaInicio)
 	
-	Insert into Prestamos (IDusuario,ISBN,IDpersonal,FechaInicio) Values (@Idusuario,@ISBN,@IDpersonal,@FechaInicio,@FechaFin)
+	update Usuarios set Cantprest = Cantprest + 1 where IDusuario = @idusuario
+	if 
+	Insert into Prestamos (IDusuario,ISBN,IDpersonal,FechaInicio, FechaFin) Values (@Idusuario,@ISBN,@IDpersonal,@FechaInicio,@FechaFin)
 End 
 go 
 
