@@ -6,6 +6,8 @@ namespace Base_Datos_II
 {
     public partial class Inicio : Form
     {
+        string Nombre = "Villedo";
+        string Contraseña = "123";
         public Inicio()
         {
             InitializeComponent();
@@ -38,6 +40,11 @@ namespace Base_Datos_II
         }
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            if (txtNombre.Text != Nombre || txtContraseña.Text != Contraseña)
+            {
+                MessageBox.Show("Contraseña o Usuario incorrecta, vuelve a intentarlo");
+                return;
+            }
             Libros ventanaLibros = new Libros();
             ventanaLibros.ShowDialog();
         }
