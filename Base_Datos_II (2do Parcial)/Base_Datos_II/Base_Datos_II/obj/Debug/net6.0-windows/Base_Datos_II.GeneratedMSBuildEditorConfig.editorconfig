@@ -14,4 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Base_Datos_II
-build_property.ProjectDir = C:\Users\Villedo\Desktop\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\
+build_property.ProjectDir = C:\Users\aleja\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
