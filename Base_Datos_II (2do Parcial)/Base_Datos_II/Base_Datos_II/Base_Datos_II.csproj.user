@@ -4,10 +4,16 @@
     <Compile Update="Ingresar.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Libros.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Miembro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Personal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Prestamos y devoluciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\MaterialButton.cs">

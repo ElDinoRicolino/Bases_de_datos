@@ -64,6 +64,7 @@ namespace Base_Datos_II
 
             labelNombre.Visible = false;
             txtNombre.Visible = false;
+            this.Hide();
         }
         private void btnPersonal_Click(object sender, EventArgs e)
         {
