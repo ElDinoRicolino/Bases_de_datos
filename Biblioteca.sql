@@ -47,8 +47,10 @@ CREATE TABLE Usuarios(
 )
 
 CREATE TABLE Bibliotecario(
-	IDpersonal int not null,
+	IDpersonal int not null identity (2000, 1),
 	Nombre varchar(50),
+	Primerapellido varchar(25),
+	Segundoapellido varchar(25),
 	Direccion varchar(50),
 	Telefono varchar(15),
 	Correo_electronico varchar(30)
@@ -209,3 +211,19 @@ begin
 	end
 end
 go
+
+Create Procedure Sp_GenerarReporte 
+@Year int,  @month int
+As 
+Begin
+	Select IDprestamo,IDusuario,ISBN,IDpersonal,FechaInicio,FechaFin,Fecharegreso
+	From Prestamos
+	Where YEAR(FechaInicio) = @Year and MONTH(FechaInicio) = @month
+
+	Select IDprestamo,IDusuario,Cantidad,Fechamulta,Fechapago
+	From Multas 
+	Where YEAR(Fechamulta) = @Year and MONTH(Fechamulta) = @month 
+
+	Select ISBN, Titulo,Autor,Editorial,Num_Copias
+	From Libros
+End
