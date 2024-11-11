@@ -10,14 +10,14 @@
     <Compile Update="Miembro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Personal.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Prestamos y devoluciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\MaterialButton.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Registrar_Usuarios.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 </Project>

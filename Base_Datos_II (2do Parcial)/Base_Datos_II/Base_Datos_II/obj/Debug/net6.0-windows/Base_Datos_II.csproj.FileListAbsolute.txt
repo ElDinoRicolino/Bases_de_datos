@@ -44,9 +44,9 @@ C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Dato
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Inicio.resources
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Libros.resources
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Miembro.resources
-C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Personal.resources
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Prestamos_y_devoluciones.resources
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Properties.Resources.resources
+C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Registrar_Usuarios.resources
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.csproj.GenerateResource.cache
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.AssemblyInfoInputs.cache

@@ -190,6 +190,14 @@ Begin
 End
 go
 
+Create Procedure SP_RegistrarPersonal
+@Nombre varchar(30),@Primerapellido varchar(25),@Segundoapellido varchar(25),@Direccion varchar(30),@Telefono varchar(15),@Correo_electronico varchar(50) 
+As 
+Begin 
+	Insert into Bibliotecario(Nombre,Primerapellido,Segundoapellido,Direccion, Telefono, Correo_electronico) Values (@Nombre,@Primerapellido,@Segundoapellido,@Direccion,@Telefono,@Correo_electronico)
+End
+go
+
 Create Procedure SP_DevolverLibro
 @idprestamo int
 as
@@ -227,3 +235,14 @@ Begin
 	Select ISBN, Titulo,Autor,Editorial,Num_Copias
 	From Libros
 End
+go
+
+Create Procedure SP_RespaldoBiblioteca 
+@backupFilePath varchar(300),
+@databaseName varchar(200)
+as 
+begin
+	BACKUP DATABASE @databaseName
+	to disk = @backupFilePath
+end
+go

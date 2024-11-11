@@ -28,34 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prestamos_y_devoluciones));
             MenuPersonal = new MenuStrip();
             librosToolStripMenuItem = new ToolStripMenuItem();
             prestamosYDevolucionesToolStripMenuItem = new ToolStripMenuItem();
+            registroDeUsuariosToolStripMenuItem = new ToolStripMenuItem();
             reportesToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            label3 = new Label();
-            label4 = new Label();
-            textBox2 = new TextBox();
-            label5 = new Label();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            label6 = new Label();
-            textBox5 = new TextBox();
-            label7 = new Label();
-            textBox6 = new TextBox();
-            label8 = new Label();
-            textBox7 = new TextBox();
-            label9 = new Label();
+            LabelPrestamo = new Label();
+            textBoxNombre = new TextBox();
+            LabelNombre = new Label();
+            textBoxID = new TextBox();
+            LabelApellido = new Label();
+            textBoxAP = new TextBox();
+            textBoxIDD = new TextBox();
+            LabelISBN = new Label();
+            textBoxISBN = new TextBox();
+            LabelID = new Label();
+            textBoxNombreD = new TextBox();
+            LabelApellidoD = new Label();
+            textBoxAPD = new TextBox();
+            LabelNombreD = new Label();
             label10 = new Label();
-            textBox8 = new TextBox();
+            textBoxISBND = new TextBox();
             label11 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            btn_DevolverLibro = new Button();
+            btn_PrestarLibro = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             btnVolver = new Button();
+            labelISBN_D = new Label();
+            LabelIDD = new Label();
             MenuPersonal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -65,31 +68,39 @@
             // 
             MenuPersonal.BackColor = SystemColors.ButtonFace;
             MenuPersonal.ImageScalingSize = new Size(24, 24);
-            MenuPersonal.Items.AddRange(new ToolStripItem[] { librosToolStripMenuItem, prestamosYDevolucionesToolStripMenuItem, reportesToolStripMenuItem });
+            MenuPersonal.Items.AddRange(new ToolStripItem[] { librosToolStripMenuItem, prestamosYDevolucionesToolStripMenuItem, registroDeUsuariosToolStripMenuItem, reportesToolStripMenuItem });
+            MenuPersonal.Location = new Point(0, 0);
             MenuPersonal.Name = "MenuPersonal";
-            MenuPersonal.Padding = new Padding(7, 3, 0, 3);
-            MenuPersonal.Size = new Size(930, 30);
+            MenuPersonal.Size = new Size(814, 24);
             MenuPersonal.TabIndex = 45;
             MenuPersonal.Text = "menuStrip1";
             // 
             // librosToolStripMenuItem
             // 
             librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            librosToolStripMenuItem.Size = new Size(63, 24);
+            librosToolStripMenuItem.Size = new Size(51, 20);
             librosToolStripMenuItem.Text = "Libros";
+            librosToolStripMenuItem.Click += librosToolStripMenuItem_Click;
             // 
             // prestamosYDevolucionesToolStripMenuItem
             // 
             prestamosYDevolucionesToolStripMenuItem.Name = "prestamosYDevolucionesToolStripMenuItem";
             prestamosYDevolucionesToolStripMenuItem.Padding = new Padding(18, 0, 4, 0);
-            prestamosYDevolucionesToolStripMenuItem.Size = new Size(205, 24);
+            prestamosYDevolucionesToolStripMenuItem.Size = new Size(170, 20);
             prestamosYDevolucionesToolStripMenuItem.Text = "Prestamos y devoluciones";
+            // 
+            // registroDeUsuariosToolStripMenuItem
+            // 
+            registroDeUsuariosToolStripMenuItem.Name = "registroDeUsuariosToolStripMenuItem";
+            registroDeUsuariosToolStripMenuItem.Size = new Size(127, 20);
+            registroDeUsuariosToolStripMenuItem.Text = "Registro De Usuarios";
+            registroDeUsuariosToolStripMenuItem.Click += registroDeUsuariosToolStripMenuItem_Click;
             // 
             // reportesToolStripMenuItem
             // 
             reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             reportesToolStripMenuItem.Padding = new Padding(18, 0, 4, 0);
-            reportesToolStripMenuItem.Size = new Size(94, 24);
+            reportesToolStripMenuItem.Size = new Size(79, 20);
             reportesToolStripMenuItem.Text = "Reportes";
             // 
             // label1
@@ -97,190 +108,214 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(25, 25, 25);
+            label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(0, 37);
+            label1.Size = new Size(0, 30);
             label1.TabIndex = 46;
             label1.Visible = false;
-            label1.Click += label1_Click;
             // 
-            // label2
+            // LabelPrestamo
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Name = "label2";
-            label2.Size = new Size(140, 37);
-            label2.TabIndex = 47;
-            label2.Text = "Prestamo";
+            LabelPrestamo.AutoSize = true;
+            LabelPrestamo.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            LabelPrestamo.Location = new Point(65, 29);
+            LabelPrestamo.Name = "LabelPrestamo";
+            LabelPrestamo.Size = new Size(112, 30);
+            LabelPrestamo.TabIndex = 47;
+            LabelPrestamo.Text = "Prestamo";
             // 
-            // textBox1
+            // textBoxNombre
             // 
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(218, 27);
-            textBox1.TabIndex = 48;
+            textBoxNombre.Location = new Point(200, 99);
+            textBoxNombre.Margin = new Padding(3, 2, 3, 2);
+            textBoxNombre.Name = "textBoxNombre";
+            textBoxNombre.Size = new Size(191, 23);
+            textBoxNombre.TabIndex = 48;
             // 
-            // label3
+            // LabelNombre
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Name = "label3";
-            label3.Size = new Size(135, 29);
-            label3.TabIndex = 49;
-            label3.Text = "Titulo Libro";
-            label3.Click += label3_Click;
+            LabelNombre.AutoSize = true;
+            LabelNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelNombre.Location = new Point(65, 98);
+            LabelNombre.Name = "LabelNombre";
+            LabelNombre.Size = new Size(79, 24);
+            LabelNombre.TabIndex = 50;
+            LabelNombre.Text = "Nombre";
             // 
-            // label4
+            // textBoxID
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Name = "label4";
-            label4.Size = new Size(101, 29);
-            label4.TabIndex = 50;
-            label4.Text = "Nombre";
+            textBoxID.Location = new Point(200, 130);
+            textBoxID.Margin = new Padding(3, 2, 3, 2);
+            textBoxID.Name = "textBoxID";
+            textBoxID.Size = new Size(191, 23);
+            textBoxID.TabIndex = 51;
+            textBoxID.KeyPress += textBoxID_KeyPress;
             // 
-            // textBox2
+            // LabelApellido
             // 
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(218, 27);
-            textBox2.TabIndex = 51;
+            LabelApellido.AutoSize = true;
+            LabelApellido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelApellido.Location = new Point(396, 98);
+            LabelApellido.Name = "LabelApellido";
+            LabelApellido.Size = new Size(79, 24);
+            LabelApellido.TabIndex = 52;
+            LabelApellido.Text = "Apellido";
             // 
-            // label5
+            // textBoxAP
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Name = "label5";
-            label5.Size = new Size(102, 29);
-            label5.TabIndex = 52;
-            label5.Text = "Apellido";
-            label5.Click += label5_Click;
+            textBoxAP.Location = new Point(497, 100);
+            textBoxAP.Margin = new Padding(3, 2, 3, 2);
+            textBoxAP.Name = "textBoxAP";
+            textBoxAP.Size = new Size(191, 23);
+            textBoxAP.TabIndex = 53;
             // 
-            // textBox3
+            // textBoxIDD
             // 
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(218, 27);
-            textBox3.TabIndex = 53;
+            textBoxIDD.Location = new Point(200, 355);
+            textBoxIDD.Margin = new Padding(3, 2, 3, 2);
+            textBoxIDD.Name = "textBoxIDD";
+            textBoxIDD.Size = new Size(191, 23);
+            textBoxIDD.TabIndex = 55;
+            textBoxIDD.KeyPress += textBoxIDD_KeyPress;
             // 
-            // textBox4
+            // LabelISBN
             // 
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(218, 27);
-            textBox4.TabIndex = 55;
+            LabelISBN.AutoSize = true;
+            LabelISBN.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelISBN.Location = new Point(65, 63);
+            LabelISBN.Name = "LabelISBN";
+            LabelISBN.Size = new Size(52, 24);
+            LabelISBN.TabIndex = 54;
+            LabelISBN.Text = "ISBN";
             // 
-            // label6
+            // textBoxISBN
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Name = "label6";
-            label6.Size = new Size(69, 29);
-            label6.TabIndex = 54;
-            label6.Text = "ISBN";
+            textBoxISBN.Location = new Point(200, 66);
+            textBoxISBN.Margin = new Padding(3, 2, 3, 2);
+            textBoxISBN.Name = "textBoxISBN";
+            textBoxISBN.Size = new Size(191, 23);
+            textBoxISBN.TabIndex = 64;
             // 
-            // textBox5
+            // LabelID
             // 
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(218, 27);
-            textBox5.TabIndex = 64;
+            LabelID.AutoSize = true;
+            LabelID.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelID.Location = new Point(65, 128);
+            LabelID.Name = "LabelID";
+            LabelID.Size = new Size(106, 24);
+            LabelID.TabIndex = 63;
+            LabelID.Text = "ID Personal";
             // 
-            // label7
+            // textBoxNombreD
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Name = "label7";
-            label7.Size = new Size(138, 29);
-            label7.TabIndex = 63;
-            label7.Text = "ID Personal";
+            textBoxNombreD.Location = new Point(200, 323);
+            textBoxNombreD.Margin = new Padding(3, 2, 3, 2);
+            textBoxNombreD.Name = "textBoxNombreD";
+            textBoxNombreD.Size = new Size(191, 23);
+            textBoxNombreD.TabIndex = 62;
             // 
-            // textBox6
+            // LabelApellidoD
             // 
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(218, 27);
-            textBox6.TabIndex = 62;
+            LabelApellidoD.AutoSize = true;
+            LabelApellidoD.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelApellidoD.Location = new Point(398, 320);
+            LabelApellidoD.Name = "LabelApellidoD";
+            LabelApellidoD.Size = new Size(79, 24);
+            LabelApellidoD.TabIndex = 61;
+            LabelApellidoD.Text = "Apellido";
             // 
-            // label8
+            // textBoxAPD
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Name = "label8";
-            label8.Size = new Size(102, 29);
-            label8.TabIndex = 61;
-            label8.Text = "Apellido";
+            textBoxAPD.Location = new Point(497, 323);
+            textBoxAPD.Margin = new Padding(3, 2, 3, 2);
+            textBoxAPD.Name = "textBoxAPD";
+            textBoxAPD.Size = new Size(191, 23);
+            textBoxAPD.TabIndex = 60;
             // 
-            // textBox7
+            // LabelNombreD
             // 
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(218, 27);
-            textBox7.TabIndex = 60;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Name = "label9";
-            label9.Size = new Size(101, 29);
-            label9.TabIndex = 59;
-            label9.Text = "Nombre";
+            LabelNombreD.AutoSize = true;
+            LabelNombreD.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelNombreD.Location = new Point(65, 320);
+            LabelNombreD.Name = "LabelNombreD";
+            LabelNombreD.Size = new Size(79, 24);
+            LabelNombreD.TabIndex = 59;
+            LabelNombreD.Text = "Nombre";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(0, 89);
             label10.Name = "label10";
-            label10.Size = new Size(135, 29);
+            label10.Size = new Size(0, 24);
             label10.TabIndex = 58;
-            label10.Text = "Titulo Libro";
             // 
-            // textBox8
+            // textBoxISBND
             // 
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(218, 27);
-            textBox8.TabIndex = 57;
+            textBoxISBND.Location = new Point(200, 294);
+            textBoxISBND.Margin = new Padding(3, 2, 3, 2);
+            textBoxISBND.Name = "textBoxISBND";
+            textBoxISBND.Size = new Size(191, 23);
+            textBoxISBND.TabIndex = 57;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(65, 253);
             label11.Name = "label11";
-            label11.Size = new Size(240, 37);
+            label11.Size = new Size(191, 30);
             label11.TabIndex = 56;
             label11.Text = "Devolver un libro";
             // 
-            // button1
+            // btn_DevolverLibro
             // 
-            button1.BackColor = Color.FromArgb(67, 160, 71);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.Control;
-            button1.Name = "button1";
-            button1.Size = new Size(588, 46);
-            button1.TabIndex = 65;
-            button1.Text = "Devolver Libro";
-            button1.UseVisualStyleBackColor = false;
+            btn_DevolverLibro.BackColor = Color.FromArgb(67, 160, 71);
+            btn_DevolverLibro.FlatStyle = FlatStyle.Popup;
+            btn_DevolverLibro.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_DevolverLibro.ForeColor = SystemColors.Control;
+            btn_DevolverLibro.Location = new Point(194, 408);
+            btn_DevolverLibro.Margin = new Padding(3, 2, 3, 2);
+            btn_DevolverLibro.Name = "btn_DevolverLibro";
+            btn_DevolverLibro.Size = new Size(514, 40);
+            btn_DevolverLibro.TabIndex = 65;
+            btn_DevolverLibro.Text = "Devolver Libro";
+            btn_DevolverLibro.UseVisualStyleBackColor = false;
+            btn_DevolverLibro.Click += btn_DevolverLibro_Click;
             // 
-            // button2
+            // btn_PrestarLibro
             // 
-            button2.BackColor = Color.FromArgb(30, 136, 229);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.Control;
-            button2.Name = "button2";
-            button2.Size = new Size(588, 46);
-            button2.TabIndex = 66;
-            button2.Text = "Prestar Libro";
-            button2.UseVisualStyleBackColor = false;
+            btn_PrestarLibro.BackColor = Color.FromArgb(30, 136, 229);
+            btn_PrestarLibro.FlatStyle = FlatStyle.Popup;
+            btn_PrestarLibro.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_PrestarLibro.ForeColor = SystemColors.Control;
+            btn_PrestarLibro.Location = new Point(173, 188);
+            btn_PrestarLibro.Margin = new Padding(3, 2, 3, 2);
+            btn_PrestarLibro.Name = "btn_PrestarLibro";
+            btn_PrestarLibro.Size = new Size(514, 40);
+            btn_PrestarLibro.TabIndex = 66;
+            btn_PrestarLibro.Text = "Prestar Libro";
+            btn_PrestarLibro.UseVisualStyleBackColor = false;
+            btn_PrestarLibro.Click += btn_PrestarLibro_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox1.Location = new Point(51, 239);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(823, 288);
+            pictureBox1.Size = new Size(721, 217);
             pictureBox1.TabIndex = 67;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             pictureBox2.BorderStyle = BorderStyle.Fixed3D;
-            pictureBox2.Margin = new Padding(5);
+            pictureBox2.Location = new Point(51, 26);
+            pictureBox2.Margin = new Padding(4, 4, 4, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(823, 279);
+            pictureBox2.Size = new Size(721, 210);
             pictureBox2.TabIndex = 68;
             pictureBox2.TabStop = false;
             // 
@@ -289,52 +324,75 @@
             btnVolver.BackColor = Color.Crimson;
             btnVolver.Cursor = Cursors.Hand;
             btnVolver.FlatAppearance.BorderColor = Color.Crimson;
-            btnVolver.FlatStyle = FlatStyle.Flat;
+            btnVolver.FlatStyle = FlatStyle.Popup;
             btnVolver.Font = new Font("Yu Gothic UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             btnVolver.ForeColor = SystemColors.ButtonFace;
-            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Location = new Point(694, 458);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(125, 53);
+            btnVolver.Size = new Size(109, 40);
             btnVolver.TabIndex = 69;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
+            // 
+            // labelISBN_D
+            // 
+            labelISBN_D.AutoSize = true;
+            labelISBN_D.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            labelISBN_D.Location = new Point(65, 291);
+            labelISBN_D.Name = "labelISBN_D";
+            labelISBN_D.Size = new Size(52, 24);
+            labelISBN_D.TabIndex = 70;
+            labelISBN_D.Text = "ISBN";
+            // 
+            // LabelIDD
+            // 
+            LabelIDD.AutoSize = true;
+            LabelIDD.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelIDD.Location = new Point(65, 352);
+            LabelIDD.Name = "LabelIDD";
+            LabelIDD.Size = new Size(106, 24);
+            LabelIDD.TabIndex = 71;
+            LabelIDD.Text = "ID Personal";
             // 
             // Prestamos_y_devoluciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 250, 250);
-            ClientSize = new Size(930, 669);
+            ClientSize = new Size(814, 502);
+            Controls.Add(LabelIDD);
+            Controls.Add(labelISBN_D);
             Controls.Add(btnVolver);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox5);
-            Controls.Add(label7);
-            Controls.Add(textBox6);
-            Controls.Add(label8);
-            Controls.Add(textBox7);
-            Controls.Add(label9);
+            Controls.Add(btn_PrestarLibro);
+            Controls.Add(btn_DevolverLibro);
+            Controls.Add(textBoxISBN);
+            Controls.Add(LabelID);
+            Controls.Add(textBoxNombreD);
+            Controls.Add(LabelApellidoD);
+            Controls.Add(textBoxAPD);
+            Controls.Add(LabelNombreD);
             Controls.Add(label10);
-            Controls.Add(textBox8);
+            Controls.Add(textBoxISBND);
             Controls.Add(label11);
-            Controls.Add(textBox4);
-            Controls.Add(label6);
-            Controls.Add(textBox3);
-            Controls.Add(label5);
-            Controls.Add(textBox2);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
+            Controls.Add(textBoxIDD);
+            Controls.Add(LabelISBN);
+            Controls.Add(textBoxAP);
+            Controls.Add(LabelApellido);
+            Controls.Add(textBoxID);
+            Controls.Add(LabelNombre);
+            Controls.Add(textBoxNombre);
+            Controls.Add(LabelPrestamo);
             Controls.Add(label1);
             Controls.Add(MenuPersonal);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Prestamos_y_devoluciones";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Prestamos_y_devoluciones";
-            Load += Prestamos_y_devoluciones_Load;
+            Text = "Prestamos Y Devoluciones";
             MenuPersonal.ResumeLayout(false);
             MenuPersonal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -350,28 +408,30 @@
         private ToolStripMenuItem prestamosYDevolucionesToolStripMenuItem;
         private ToolStripMenuItem reportesToolStripMenuItem;
         private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private Label label3;
-        private Label label4;
-        private TextBox textBox2;
-        private Label label5;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private Label label6;
-        private TextBox textBox5;
-        private Label label7;
-        private TextBox textBox6;
-        private Label label8;
-        private TextBox textBox7;
-        private Label label9;
+        private Label LabelPrestamo;
+        private TextBox textBoxNombre;
+        private Label LabelNombre;
+        private TextBox textBoxID;
+        private Label LabelApellido;
+        private TextBox textBoxAP;
+        private TextBox textBoxIDD;
+        private Label LabelISBN;
+        private TextBox textBoxISBN;
+        private Label LabelID;
+        private TextBox textBoxNombreD;
+        private Label LabelApellidoD;
+        private TextBox textBoxAPD;
+        private Label LabelNombreD;
         private Label label10;
-        private TextBox textBox8;
+        private TextBox textBoxISBND;
         private Label label11;
-        private Button button1;
-        private Button button2;
+        private Button btn_DevolverLibro;
+        private Button btn_PrestarLibro;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Button btnVolver;
+        private Label labelISBN_D;
+        private Label LabelIDD;
+        private ToolStripMenuItem registroDeUsuariosToolStripMenuItem;
     }
 }
