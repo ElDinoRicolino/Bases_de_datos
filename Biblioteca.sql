@@ -190,7 +190,6 @@ Begin
 End
 go
 
-<<<<<<< HEAD
 Create Procedure SP_RegistrarPersonal
 @Nombre varchar(30),@Primerapellido varchar(25),@Segundoapellido varchar(25),@Direccion varchar(30),@Telefono varchar(15),@Correo_electronico varchar(50) 
 As 
@@ -199,8 +198,6 @@ Begin
 End
 go
 
-=======
->>>>>>> 8599f657980d2cf252af25893497bb36d522c70c
 Create Procedure SP_DevolverLibro
 @idprestamo int
 as
