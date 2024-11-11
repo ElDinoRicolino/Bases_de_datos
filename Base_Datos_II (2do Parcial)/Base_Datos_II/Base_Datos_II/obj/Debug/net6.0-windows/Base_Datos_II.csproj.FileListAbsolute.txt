@@ -436,3 +436,4 @@ C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Dato
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.genruntimeconfig.cache
 C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\ref\Base_Datos_II.dll
 >>>>>>> 8599f657980d2cf252af25893497bb36d522c70c
+C:\Users\Dino\Bases_de_datos\Base_Datos_II (2do Parcial)\Base_Datos_II\Base_Datos_II\obj\Debug\net6.0-windows\Base_Datos_II.Registrar_Usuarios.resources
