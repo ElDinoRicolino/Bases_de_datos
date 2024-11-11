@@ -1914,39 +1914,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Dino\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\Villedo\\.nuget\\packages\\": {},
->>>>>>> 01212f3e8a25d946e044a285b97cb7b6f6df8fe1
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Dino\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\Base_Datos_II.csproj",
       "projectName": "Base_Datos_II",
       "projectPath": "C:\\Users\\Dino\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\Base_Datos_II.csproj",
       "packagesPath": "C:\\Users\\Dino\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Dino\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\Villedo\\Desktop\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\Base_Datos_II.csproj",
-      "projectName": "Base_Datos_II",
-      "projectPath": "C:\\Users\\Villedo\\Desktop\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\Base_Datos_II.csproj",
-      "packagesPath": "C:\\Users\\Villedo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Villedo\\Desktop\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\obj\\",
->>>>>>> 01212f3e8a25d946e044a285b97cb7b6f6df8fe1
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
         "C:\\Users\\Dino\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\Villedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 01212f3e8a25d946e044a285b97cb7b6f6df8fe1
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2002,20 +1986,8 @@
             "privateAssets": "none"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
->>>>>>> 01212f3e8a25d946e044a285b97cb7b6f6df8fe1
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\Dino\\Bases_de_datos\\Base_Datos_II (2do Parcial)\\Base_Datos_II\\Base_Datos_II\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
