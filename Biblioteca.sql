@@ -1,4 +1,8 @@
-CREATE DATABASE Biblioteca
+use master
+if exists (select * from sysdatabases where name='Biblioteca')
+	drop database Biblioteca
+go
+create database Biblioteca
 GO
 USE Biblioteca
 GO
@@ -179,3 +183,16 @@ begin
 		end
 	end
 end
+go
+
+create procedure SP_RonovarPrestamo
+@idprestamo int
+as 
+begin
+	if(select Renovacion from Prestamos where IDprestamo = @idprestamo) = 0
+	begin
+		update Prestamos set Renovacion = 1, FechaFin = dateadd(day, 14, FechaFin) where IDprestamo = @idprestamo
+	end
+end
+go
+
