@@ -179,7 +179,3 @@ begin
 		end
 	end
 end
---drop procedure SP_AgregarLibros
---drop procedure SP_PrestarLibro
---drop procedure SP_RegistrarUsuario
-
