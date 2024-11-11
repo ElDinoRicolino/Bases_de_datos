@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Base_Datos_II")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1193f5a9f8f20e373d0f784164ed3d2d8d47698")]
+>>>>>>> 8599f657980d2cf252af25893497bb36d522c70c
 [assembly: System.Reflection.AssemblyProductAttribute("Base_Datos_II")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Base_Datos_II")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
