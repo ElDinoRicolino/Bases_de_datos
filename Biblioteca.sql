@@ -156,7 +156,7 @@ begin
     close cr_prestamos
     deallocate cr_prestamos
 end
-
+go
 
 --Aqui empiezan los Stored Precedures
 Create procedure SP_AgregarLibros
