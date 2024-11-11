@@ -126,6 +126,38 @@ Begin
 End
 go 
 
+create trigger Tr_CalcularMulta
+on Prestamos 
+for update
+as
+begin
+    declare @diasPasados int, @idprestamo int, @FechaFin date, @idusuario int
+    
+    declare cr_prestamos cursor for
+        select IDprestamo, FechaFin, IDusuario
+        from inserted
+
+    open cr_prestamos
+    fetch next from cr_prestamos into @idprestamo, @FechaFin, @idusuario
+
+    while @@FETCH_STATUS = 0
+    begin
+        set @diasPasados = datediff(day, @FechaFin, GETDATE())
+
+        if @diasPasados > 0
+        begin
+            insert into Multas (IDprestamo, IDusuario, Cantidad, Fechamulta)
+            values (@idprestamo, @idusuario, @diasPasados, GETDATE())
+        end
+
+        fetch next from cr_prestamos into @idprestamo, @FechaFin, @idusuario
+    end
+
+    close cr_prestamos
+    deallocate cr_prestamos
+end
+
+
 --Aqui empiezan los Stored Precedures
 Create procedure SP_AgregarLibros
 @ISBN int, @Titulo varchar(30), @Autor varchar(30), @Editorial varchar(30),@Publicacion date, @Num_Copias int
@@ -163,24 +195,6 @@ begin
 	if (select FechaRegreso from Prestamos where IDprestamo = @idprestamo) = null
 	begin
 		Update Prestamos set Fecharegreso = GETDATE() where IDprestamo = @idprestamo
-	
-		declare @diasPasados int, @FechaFin date, @idusuario int
-
-		select @FechaFin = FechaFin
-		from Prestamos 
-		where IDprestamo = @idprestamo
-
-		set @diasPasados = DATEDIFF(DAY, @FechaFin, GETDATE())
-
-		if @diasPasados > 0
-		begin
-			select @idusuario = IDusuario
-			from Prestamos
-			where IDprestamo = @idprestamo
-
-			insert into Multas (IDprestamo, IDusuario, Cantidad, Fechamulta)
-			values (@idprestamo, @idusuario, @diasPasados, GETDATE())
-		end
 	end
 end
 go
@@ -195,4 +209,3 @@ begin
 	end
 end
 go
-
