@@ -16,7 +16,7 @@ namespace Base_Datos_II
 {
     public partial class Personal : Form
     {
-        private string cmd = "Server=DESKTOP-GTORLDP\\SQLEXPRESS;" +
+        private string cmd = "Server=DESKTOP-7FA4G9M;" +
                                    "Database=Biblioteca;" +
                                    "Trusted_Connection=True;" +
                                    "TrustServerCertificate=True;";

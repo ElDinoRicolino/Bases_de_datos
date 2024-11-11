@@ -79,13 +79,12 @@ Create table Reservaciones (
 )
 
 Create table Multas (
-	IDmulta int not null,
 	IDprestamo int not null,
 	IDusuario int not null, 
 	Cantidad int,
 	Fechamulta date,
-	Fechapago date, 
-	Constraint PK_IDmulta Primary Key(IDmulta),
+	Fechapago date null, 
+	Constraint PK_IDmulta Primary Key(IDprestamo, IDusuario),
 	Constraint FK_IDprestamo_multa Foreign Key (IDprestamo) References Prestamos(IDprestamo),
 	Constraint FK_IDusuarios_multa Foreign Key (IDusuario) References Usuarios(IDusuario)
 )
@@ -153,6 +152,34 @@ Begin
 End
 go
 
+Create Procedure SP_DevolverLibro
+@idprestamo int
+as
+begin 
+	if (select FechaRegreso from Prestamos where IDprestamo = @idprestamo) = null
+	begin
+		Update Prestamos set Fecharegreso = GETDATE() where IDprestamo = @idprestamo
+	
+		declare @diasPasados int, @FechaFin date, @idusuario int
+
+		select @FechaFin = FechaFin
+		from Prestamos 
+		where IDprestamo = @idprestamo
+
+		set @diasPasados = DATEDIFF(DAY, @FechaFin, GETDATE())
+
+		if @diasPasados > 0
+		begin
+			select @idusuario = IDusuario
+			from Prestamos
+			where IDprestamo = @idprestamo
+
+			insert into Multas (IDprestamo, IDusuario, Cantidad, Fechamulta)
+			values (@idprestamo, @idusuario, @diasPasados, GETDATE())
+		end
+	end
+end
 --drop procedure SP_AgregarLibros
 --drop procedure SP_PrestarLibro
 --drop procedure SP_RegistrarUsuario
+
