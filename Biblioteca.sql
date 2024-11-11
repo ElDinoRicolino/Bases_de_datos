@@ -243,6 +243,6 @@ Create Procedure SP_RespaldoBiblioteca
 as 
 begin
 	BACKUP DATABASE @databaseName
-	to disk = @bakcupFilePath
+	to disk = @backupFilePath
 end
 go
