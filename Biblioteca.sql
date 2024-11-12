@@ -220,13 +220,31 @@ go
 Create Procedure SP_DevolverLibro
 @idprestamo int
 as
-begin 
-	if (select FechaRegreso from Prestamos where IDprestamo = @idprestamo) = null
+begin
+	-- Variables para verificar día y hora
+	declare @diaSemana int = DATEPART(WEEKDAY, GETDATE())
+	declare @horaActual time = CONVERT(time, GETDATE())
+
+	-- Comprobar si es dentro del horario permitido
+	if (
+		(@diaSemana >= 2 and @diaSemana <= 6 and @horaActual >= '09:00' and @horaActual <= '18:00') -- Lunes a viernes de 9 a 18
+		or (@diaSemana = 7 and @horaActual >= '10:00' and @horaActual <= '14:00') -- Sábado de 10 a 14
+	)
 	begin
-		Update Prestamos set Fecharegreso = GETDATE() where IDprestamo = @idprestamo
+		-- Validar si el préstamo ya tiene una fecha de regreso
+		if (select FechaRegreso from Prestamos where IDprestamo = @idprestamo) is null
+		begin
+			Update Prestamos set FechaRegreso = GETDATE() where IDprestamo = @idprestamo
+		end
+	end
+	else
+	begin
+		-- Mensaje de error si el registro no es dentro del horario permitido
+		raiserror('La devolución solo puede realizarse de lunes a viernes de 9 a 18 horas, y los sábados de 10 a 14 horas.', 16, 1)
 	end
 end
 go
+
 
 create procedure SP_RonovarPrestamo
 @idprestamo int
