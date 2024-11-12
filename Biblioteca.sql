@@ -169,18 +169,37 @@ Begin
 End
 go
 
-Create Procedure SP_PrestarLibro
-@idusuario int, @ISBN int, @IDpersonal int
-As 
-Begin   
-	Declare @FechaInicio date, @FechaFin date
-	set @FechaInicio = GETDATE()
-	Set @FechaFin = DATEADD(DAY,14,@FechaInicio)
-	
-	update Usuarios set Cantprest = Cantprest + 1 where IDusuario = @idusuario
-	Insert into Prestamos (IDusuario,ISBN,IDpersonal,FechaInicio, FechaFin) Values (@Idusuario,@ISBN,@IDpersonal,@FechaInicio,@FechaFin)
-End 
-go 
+CREATE PROCEDURE SP_PrestarLibro
+    @idusuario INT,
+    @ISBN INT,
+    @IDpersonal INT
+AS
+BEGIN
+    DECLARE @FechaInicio DATE, @FechaFin DATE, @DiaSemana INT, @HoraActual TIME
+    SET @FechaInicio = GETDATE()
+    SET @FechaFin = DATEADD(DAY, 14, @FechaInicio)
+
+    -- Obtener el día de la semana y la hora actual
+    SET @DiaSemana = DATEPART(WEEKDAY, @FechaInicio)
+    SET @HoraActual = CONVERT(TIME, GETDATE())
+
+    -- Validar que solo se permita de lunes a viernes de 9:00 a.m. a 6:00 p.m. y sábados de 10:00 a.m. a 2:00 p.m.
+    IF (
+           (@DiaSemana >= 2 AND @DiaSemana <= 6 AND @HoraActual BETWEEN '09:00' AND '18:00') 
+        OR (@DiaSemana = 7 AND @HoraActual BETWEEN '10:00' AND '14:00')
+       )
+    BEGIN
+        UPDATE Usuarios SET Cantprest = Cantprest + 1 WHERE IDusuario = @idusuario
+        INSERT INTO Prestamos (IDusuario, ISBN, IDpersonal, FechaInicio, FechaFin) 
+        VALUES (@idusuario, @ISBN, @IDpersonal, @FechaInicio, @FechaFin)
+    END
+    ELSE
+    BEGIN
+        RAISERROR('Los registros solo se pueden hacer de lunes a viernes de 9:00 a.m. a 6:00 p.m. y los sábados de 10:00 a.m. a 2:00 p.m.', 16, 1)
+    END
+END
+GO
+
 
 Create Procedure SP_RegistrarUsuario 
 @Nombre varchar(30),@Primerapellido varchar(25),@Segundoapellido varchar(25),@Direccion varchar(30),@Telefono varchar(15),@Correo_electronico varchar(50) 
